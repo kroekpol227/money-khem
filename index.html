@@ -19,10 +19,43 @@ body{
     padding:30px;
     border-radius:15px;
     box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    text-align:center;
 }
 
 h1{
     text-align:center;
+}
+
+/* กล่องรูป + ป้าย */
+.creditor-box{
+    position:relative;
+    display:inline-block;
+    margin:20px 0;
+}
+
+.creditor-label{
+    position:absolute;
+    top:-30px;
+    left:-20px;
+    font-size:22px;
+    font-weight:bold;
+    color:red;
+}
+
+/* รูปเจ้าหนี้ */
+.creditor-img{
+    width:350px;
+    max-width:100%;
+    display:block;
+}
+
+/* ลูกศร */
+.arrow{
+    position:absolute;
+    top:5px;
+    left:60px;
+    font-size:30px;
+    color:red;
 }
 
 textarea{
@@ -32,6 +65,7 @@ textarea{
     border-radius:10px;
     border:1px solid #ccc;
     font-size:14px;
+    text-align:left;
 }
 
 button{
@@ -56,6 +90,7 @@ button:hover{
     background:#f4f8ff;
     border-radius:10px;
     font-weight:bold;
+    text-align:left;
 }
 
 .green{color:green;}
@@ -67,6 +102,14 @@ button:hover{
 
 <div class="container">
 <h1>💑 ระบบคำนวณเงินอัตโนมัติ</h1>
+
+<div class="creditor-box">
+    <div class="creditor-label">เจ้าหนี้</div>
+    <div class="arrow"></div>
+    <img src="1.jpeg" 
+         alt="เจ้าหนี้"
+         class="creditor-img">
+</div>
 
 <textarea id="inputData" placeholder="วางข้อมูลตรงนี้..."></textarea>
 
@@ -108,7 +151,6 @@ function calculate(){
 
     let summary = `
     💸 รายจ่ายทั้งหมด: ${expenseTotal.toLocaleString()} บาท <br><br>
-    
     💵 คืนทั้งหมด: ${returnTotal.toLocaleString()} บาท <br><br>
     `;
 
@@ -117,7 +159,7 @@ function calculate(){
     }else if(balance < 0){
         summary += `<span class="green">เกินมา ${Math.abs(balance).toLocaleString()} บาท</span>`;
     }else{
-        summary += `<span class="green"></span>`;
+        summary += `<span class="green">เคลียร์เรียบร้อย ✅</span>`;
     }
 
     document.getElementById("result").innerHTML = summary;
