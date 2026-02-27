@@ -159,7 +159,7 @@ function calculate(){
     }else if(balance < 0){
         summary += `<span class="green">เกินมา ${Math.abs(balance).toLocaleString()} บาท</span>`;
     }else{
-        summary += `<span class="green">เคลียร์เรียบร้อย ✅</span>`;
+        summary += `<span class="green">มีแล้วจะคืนให้ครบ </span>`;
     }
 
     document.getElementById("result").innerHTML = summary;
